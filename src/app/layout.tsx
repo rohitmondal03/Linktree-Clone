@@ -2,7 +2,8 @@ import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import type { TLayout } from "types";
-import "@/~/styles/globals.css";
+import "~/styles/globals.css";
+import { ThemeProvider } from "~/components/providers/ThemeProvider";
 
 
 const inter = Inter({
@@ -21,7 +22,9 @@ export default function RootLayout({ children }: TLayout) {
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
-        <main>{children}</main>
+        <main>
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>{children}</ThemeProvider>
+</main>
       </body>
     </html>
   );
