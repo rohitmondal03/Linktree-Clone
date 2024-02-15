@@ -29,6 +29,7 @@ export async function getUserSubscriptionPlan() {
       stripeCustomerId: null,
       isSubscribed: false,
       isCanceled: false,
+      recurring: undefined,
     };
 
   const isSubscribed =

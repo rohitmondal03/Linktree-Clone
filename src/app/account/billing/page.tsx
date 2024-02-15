@@ -1,6 +1,6 @@
-import { CheckCircle2Icon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { CheckCircle2Icon } from "lucide-react";
 
 import { ManageUserSubscriptionButton } from "./ManageSubscription";
 import { storeSubscriptionPlans } from "~/config/subscriptions";
@@ -73,7 +73,7 @@ export default async function Billing() {
             <CardContent>
               <div className="mt-2 mb-8">
                 <h3 className="font-bold">
-                  <span className="text-3xl">${plan.price / 100}</span> / month
+                  <span className="text-3xl">Rs. {plan.price}</span> {"/"}{plan.recurring}
                 </h3>
               </div>
               <ul className="space-y-2">

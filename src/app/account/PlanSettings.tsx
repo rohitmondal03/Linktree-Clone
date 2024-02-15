@@ -23,6 +23,7 @@ interface PlanSettingsProps {
   description?: string | undefined;
   stripePriceId?: string | undefined;
   price?: number | undefined;
+  recurring?:string | undefined;
 }
 
 
@@ -48,7 +49,7 @@ export default function PlanSettings({
       <CardContent>
         {subscriptionPlan.isSubscribed ? (
           <h3 className="font-semibold text-lg">
-            ${subscriptionPlan.price ? subscriptionPlan.price / 100 : 0} / month
+            Rs. {subscriptionPlan.price ? subscriptionPlan.price : 0} / {subscriptionPlan.price}
           </h3>
         ) : null}
         {subscriptionPlan.stripeCurrentPeriodEnd ? (
