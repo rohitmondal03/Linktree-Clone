@@ -1,24 +1,33 @@
-import { type Session } from "next-auth";
-
-// import UserSettings from "./UserSettings";
-import PlanSettings from "./PlanSettings";
 import { getUserAuth } from "~/lib/auth/utils";
 import { getUserSubscriptionPlan } from "~/lib/stripe/subscription";
+import PlanSettings from "./PlanSettings";
+import classNames from "classnames";
 
 
 export default async function Account() {
   const session = await getUserAuth();
   const subscriptionPlan = await getUserSubscriptionPlan();
 
+  const user = session?.user;
+
+
   return (
-    <main>
-      <h1 className="text-2xl font-semibold my-4">Account</h1>
-      <div className="space-y-4">
-        <PlanSettings
-          subscriptionPlan={subscriptionPlan}
-          session={session}
-        />
+    <section className={classNames({
+      "py-28 px-16": true,
+      "space-y-20": true,
+    })}>
+      <div className={classNames({
+        "font-bold text-center": true,
+        "space-y-1": true,
+      })}>
+        <h1 className="text-3xl text-muted-foreground">Welcome to your account</h1>
+        <p className="text-4xl">{user?.name}</p>
       </div>
-    </main>
+
+      <PlanSettings
+        subscriptionPlan={subscriptionPlan}
+        session={session}
+      />
+    </section>
   );
 }
