@@ -5,8 +5,11 @@ export const { routes, useSafeParams, useSafeSearchParams } = createNavigationCo
   (defineRoute) => ({
     homeRoute: defineRoute('/'),
     signinRoute: defineRoute("/signin"),
+    pricingRoute: defineRoute("/pricing"),
     accountRoute: defineRoute("/account"),
     billingRoute: defineRoute("/account/billing"),
+    settingRoute: defineRoute("/account/setting"),
+    pagesRoute: defineRoute("/account/pages"),
   }),
 );
 

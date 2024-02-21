@@ -13,15 +13,16 @@ export default async function Account() {
 
   return (
     <section className={classNames({
-      "py-28 px-16": true,
-      "space-y-20": true,
+      "space-y-12": true,
     })}>
       <div className={classNames({
-        "font-bold text-center": true,
+        "font-bold": true,
         "space-y-1": true,
       })}>
-        <h1 className="text-3xl text-muted-foreground">Welcome to your account</h1>
-        <p className="text-4xl">{user?.name}</p>
+        <h1 className="text-4xl">
+          Welcome to your account {" "}
+          <span className="">{user?.name}</span>
+        </h1>
       </div>
 
       <PlanSettings

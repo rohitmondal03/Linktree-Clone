@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { type Session } from "next-auth";
 
-import { Button, buttonVariants } from "~/components/ui/button";
+import { routes } from "~/config/routes";
+import { cn } from "~/lib/utils";
+import { buttonVariants } from "~/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "~/components/ui/card";
-import { cn } from "~/lib/utils";
 
 
 interface PlanSettingsProps {
@@ -28,15 +29,17 @@ interface PlanSettingsProps {
 }
 
 
-export default function PlanSettings({
-  subscriptionPlan,
-  session,
-}: {
+type TProps = {
   subscriptionPlan: PlanSettingsProps;
   session: Session | null;
-}) {
+}
+
+
+export default function PlanSettings({ subscriptionPlan, session }: TProps) {
+  const { billingRoute } = routes;
+
   return (
-    <Card className="w-fit mx-auto">
+    <Card className="w-full">
       <CardHeader className="text-xl font-bold">
         {subscriptionPlan.isSubscribed
           ? `You are currently on the ${subscriptionPlan.name} plan.`
@@ -63,29 +66,26 @@ export default function PlanSettings({
               ? null
               : subscriptionPlan.isCanceled
                 ? "cancel"
-                : "renew"}
+                : "renew"
+            }
             {" on "}
             <span className="font-semibold">
-              {subscriptionPlan.stripeCurrentPeriodEnd.toLocaleDateString(
-                "en-us"
-              )}
+              {subscriptionPlan.stripeCurrentPeriodEnd.toLocaleDateString("en-us")}
             </span>
           </p>
         ) : null}
       </CardContent>
       <CardFooter>
-        <p>Manage your subscription on Stripe.</p>
-
-        <div>
-          <Link
-            href={"/account/billing"}
-            className={cn(buttonVariants({
-            }))}
-          >
-            Billing
-          </Link>
-        </div>
+        <Link
+          href={billingRoute()}
+          className={cn(buttonVariants({
+            variant: "default",
+            size: "default"
+          }))}
+        >
+          Billing
+        </Link>
       </CardFooter>
     </Card>
-  );
+  )
 }
