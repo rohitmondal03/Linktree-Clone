@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import type { TLayout } from "types";
 import { siteConfig } from "~/config/site";
 import { ThemeProvider } from "~/components/providers/ThemeProvider";
+import AuthProvider from "~/components/providers/AuthProvider";
 import Navbar from "~/components/ui/nav-bar";
 import "~/styles/globals.css";
 
@@ -30,8 +31,10 @@ export default function RootLayout({ children }: TLayout) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main>{children}</main>
+          <AuthProvider>
+            <Navbar />
+            <main>{children}</main>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

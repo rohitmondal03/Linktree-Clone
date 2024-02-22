@@ -1,36 +1,35 @@
 import { getUserSubscriptionPlan } from "~/lib/stripe/subscription";
+import { getUserAuth } from "~/lib/auth/utils";
+
 import SuccessToast from "./SuccessToast";
-import { Card } from "~/components/ui/card";
+import PlanSettings from "./PlanSettings";
 
 
 export default async function Billing() {
   const subscriptionPlan = await getUserSubscriptionPlan();
+  const session = await getUserAuth();
+
+  const user = session?.user;
 
 
   return (
-    <div className="min-h-[calc(100vh-57px)] ">
+    <section className="min-h-[calc(100vh-57px)] ">
       <SuccessToast />
-      <h1 className="text-3xl font-semibold mb-4">Billing</h1>
-      <Card className="p-6 mb-2">
-        <h3 className="uppercase text-xs font-bold text-muted-foreground">
-          Subscription Details
-        </h3>
-        <p className="text-lg font-semibold leading-none my-2">
-          {subscriptionPlan.name}
+
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold">
+          Billing
+        </h1>
+
+        <p className="text-muted-foreground text-xl">
+          Manage your bills and subscription plans.
         </p>
-        <p className="text-sm text-muted-foreground">
-          {!subscriptionPlan.isSubscribed
-            ? "You are not subscribed to any plan."
-            : subscriptionPlan.isCanceled
-              ? "Your plan will be canceled on "
-              : "Your plan renews on "
-          }
-          {subscriptionPlan?.stripeCurrentPeriodEnd
-            ? subscriptionPlan.stripeCurrentPeriodEnd.toLocaleDateString()
-            : null
-          }
-        </p>
-      </Card>
-    </div>
+      </div>
+
+      <PlanSettings 
+        session={session}
+        subscriptionPlan={subscriptionPlan}
+      />
+    </section>
   );
 }

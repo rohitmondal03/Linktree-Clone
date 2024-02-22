@@ -7,7 +7,7 @@ import { buttonVariants } from '../ui/button'
 
 
 export async function LoginButton() {
-  const { signinRoute, accountRoute } = routes;
+  const { signinRoute, pagesRoute } = routes;
 
   const session = await getUserAuth();
   const user = session?.user;
@@ -15,12 +15,12 @@ export async function LoginButton() {
 
   return (
     <Link
-      href={user ? accountRoute() : signinRoute()}
+      href={user ? pagesRoute() : signinRoute()}
       className={cn(buttonVariants({
         variant: "default"
       }))}
     >
-      {user ? "Dashboard" : "Login"}
+      {user ? "Account" : "Login"}
     </Link>
   )
 }

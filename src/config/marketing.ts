@@ -3,7 +3,6 @@ import {
   CreditCard,
   NotepadText,
   Settings,
-  User
 } from "lucide-react"
 
 import { routes } from "./routes"
@@ -17,11 +16,6 @@ type TSideNav = {
 
 
 export const sideNav: TSideNav[] = [
-  {
-    title: "Account",
-    href: routes.accountRoute(),
-    Icon: User,
-  },
   {
     title: "Pages",
     href: routes.pagesRoute(),
