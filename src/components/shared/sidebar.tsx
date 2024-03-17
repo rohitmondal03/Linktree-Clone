@@ -4,9 +4,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import classNames from "classnames"
 
-import { sideNav } from "~/config/marketing"
+import { SIDE_NAV } from "~/config/marketing"
 import { cn } from "~/lib/utils"
-import { buttonVariants } from "./button"
+import { buttonVariants } from "../ui/button"
 
 
 export default function SideNavBar() {
@@ -17,7 +17,7 @@ export default function SideNavBar() {
     <aside className={classNames({
       "flex flex-col gap-y-3": true,
     })}>
-      {sideNav.map((link) => (
+      {SIDE_NAV.map((link) => (
         <Link
           href={link.href}
           className={cn(buttonVariants({

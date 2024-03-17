@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { TLayout } from 'types'
-import SideNavBar from '~/components/ui/side-nav-bar'
+import SideNavBar from '~/components/shared/sidebar'
 
 
 export default function ({ children }: TLayout) {

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { UserCheck2Icon, LogIn } from "lucide-react"
 
 import { getUserAuth } from '~/lib/auth/utils'
 import { cn } from '~/lib/utils'
@@ -17,10 +18,14 @@ export async function LoginButton() {
     <Link
       href={user ? pagesRoute() : signinRoute()}
       className={cn(buttonVariants({
-        variant: "default"
+        variant: user ? "destructive" : "default",
+        size: "icon",
       }))}
     >
-      {user ? "Account" : "Login"}
+      {user
+        ? <UserCheck2Icon />
+        : <LogIn />
+      }
     </Link>
   )
 }

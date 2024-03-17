@@ -1,4 +1,4 @@
 export const siteConfig = {
-  title: "LinkStack",
-  description: "A website to create unique, profile pages and share it with anyone !",
+  title: "Kloutly",
+  description: "Don't blend in, Kloutly out! Create a stunning, personalized link that gets you noticed",
 }

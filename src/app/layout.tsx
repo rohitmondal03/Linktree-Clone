@@ -5,7 +5,7 @@ import type { TLayout } from "types";
 import { siteConfig } from "~/config/site";
 import { ThemeProvider } from "~/components/providers/ThemeProvider";
 import AuthProvider from "~/components/providers/AuthProvider";
-import Navbar from "~/components/ui/nav-bar";
+import Navbar from "~/components/shared/navbar";
 import "~/styles/globals.css";
 
 
@@ -13,6 +13,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
 
 export const metadata: Metadata = {
   title: siteConfig.title,

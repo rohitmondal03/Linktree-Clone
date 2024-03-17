@@ -15,7 +15,7 @@ type TSideNav = {
 }
 
 
-export const sideNav: TSideNav[] = [
+export const SIDE_NAV: TSideNav[] = [
   {
     title: "Pages",
     href: routes.pagesRoute(),
