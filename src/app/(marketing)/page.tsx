@@ -21,6 +21,7 @@ export default async function MainPage() {
         Kloutly
       </h1>
 
+
       <p className={classNames({
         "text-6xl font-bold text-pink-500 dark:text-pink-500": true,
         "space-y-3": true,

@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Niramit as Montserrat,  } from "next/font/google";
 
 import type { TLayout } from "types";
 import { siteConfig } from "~/config/site";
@@ -10,8 +10,8 @@ import "~/styles/globals.css";
 
 
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ["vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: TLayout) {
   return (
     <html lang="en">
-      <body className={`font-sans ${montserrat.variable}`}>
+      <body className={`${montserrat.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+        disableTransitionOnChange
         >
           <AuthProvider>
             <Navbar />
